@@ -1,9 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
-import {
-  IsIn, IsISO8601, IsNotEmpty, IsString, MinLength,Validate,
-  ValidationArguments,
-  ValidatorConstraint,
-  ValidatorConstraintInterface} from 'class-validator'; // revisar que hacen IsISO8601-ValidationArguments-ValidatorConstraint-ValidatorConstraintInterface
+import {IsIn, IsISO8601, IsNotEmpty, IsString, MinLength, Validate, ValidationArguments, ValidatorConstraint,
+  ValidatorConstraintInterface} from 'class-validator'; 
 export const CATEGORIAS = [
   'Hardware',
   'Software',
@@ -17,7 +14,7 @@ export type Categoria = (typeof CATEGORIAS)[number];
 export type Prioridad = (typeof PRIORIDADES)[number];
 
 // validar del rn07 fecha posterior a la de hoy
-// documentar como funciona esto
+
 @ValidatorConstraint({ name: 'isNotFutureDate', async: false })
 export class IsNotFutureDateConstraint implements ValidatorConstraintInterface {
   validate(value: string) {
